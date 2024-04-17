@@ -1,0 +1,50 @@
+version: 2
+
+sources: 
+  - name: raw 
+    schema: gz_raw_data
+    description: greenweez sale analysis 
+    tables:
+      - name: sales
+        identifier: raw_gz_sales
+        description: sales from greenweez
+        columns:
+          - name: orders_id 
+            description: foreign key
+          - name: date_date
+            description: dates 
+          - name: pdt_id 
+            description: products id 
+        tests:
+          - unique:
+              column_name: "(orders_id || '-' || pdt_id )"
+          
+            
+              
+
+      - name: product
+        identifier: raw_gz_product
+        columns:
+          - name: products_id
+            description: products_id is the primary key
+            tests:
+              - unique
+              - not_null
+          - name: purchase_price
+            description: price and product
+
+
+            
+                
+
+                  
+
+      - name: ship
+        identifier: raw_gz_ship
+        columns:
+          - name: orders_id
+            description: orders_id is the primary key
+            tests:
+              - unique
+              - not_null
+              
